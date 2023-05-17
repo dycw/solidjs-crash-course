@@ -17,15 +17,20 @@ interface Props {
 }
 
 const saveRepo = (repo: Repo) => {
-  // setSavedRepos([...savedRepos(), repo]);
   const current = savedRepos();
   if (!current.includes(repo)) {
     setSavedRepos([...current, repo]);
   }
+  updateLocalStore();
 };
 
 const unsaveRepo = (repo: Repo) => {
   setSavedRepos(savedRepos()?.filter((r) => r.id !== repo.id));
+  updateLocalStore();
+};
+
+const updateLocalStore = () => {
+  localStorage.setItem("savedRepos", JSON.stringify(savedRepos()));
 };
 
 const repoIsSaved = (repo: Repo) => {

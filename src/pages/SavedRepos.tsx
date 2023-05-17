@@ -1,7 +1,10 @@
 import { Component, createSignal, For } from "solid-js";
 import RepoCard, { Repo } from "../components/RepoCard";
 
-const [savedRepos, setSavedRepos] = createSignal([] as Repo[]);
+const reposFromLocalStorage: Repo[] = JSON.parse(
+  localStorage.getItem("savedRepos") || "[]",
+);
+const [savedRepos, setSavedRepos] = createSignal(reposFromLocalStorage);
 
 const SavedRepos: Component = () => {
   return (
