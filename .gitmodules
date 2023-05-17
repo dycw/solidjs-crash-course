@@ -1,0 +1,3 @@
+[submodule "solid-gh-repos"]
+	path = solid-gh-repos
+	url = https://github.com/ebenezerdon/solid-gh-repos

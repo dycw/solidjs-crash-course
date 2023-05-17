@@ -1,3 +1,3 @@
-# `template`
+# SolidJS Crash Course (Ebenezer Don)
 
-Template for generic repositories
+https://www.youtube.com/watch?v=WDodWU-B-aY
