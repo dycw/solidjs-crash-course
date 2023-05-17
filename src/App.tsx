@@ -3,18 +3,19 @@ import Home from "./pages/Home";
 import Nav from "./components/Nav";
 import SavedRepos from "./pages/SavedRepos";
 import { Route, Routes } from "solid-app-router";
+import { Repo } from "./components/RepoCard";
 
 const [username, setUsername] = createSignal("dycw");
-const [repos, setRepos] = createSignal([]);
+const [repos, setRepos] = createSignal([] as Repo[]);
+
+createEffect(async () => {
+  const res = await fetch(
+    `https://api.github.com/users/${username()}/repos?sort=updated`,
+  );
+  setRepos(await res.json());
+});
 
 const App: Component = () => {
-  createEffect(async () => {
-    const res = await fetch(
-      `https://api.github.com/users/${username()}/repos?sort=updated`,
-    );
-    setRepos(await res.json());
-  });
-
   return (
     <div class="container">
       <Nav />
